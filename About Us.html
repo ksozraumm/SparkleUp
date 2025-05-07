@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>About Us</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="navbar">
+    <a class="navbar__logo" href="index.html">
+      <img src="logo.png" alt="mini-logo" />
+    </a>
+    <nav>
+      
+      <span class="navbar__toggle">☰</span>
+      
+      <ul class="navbar__links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="About Us.html">About Us</a></li>
+        <li><a href="plananevent.html">Plan an Event</a></li>
+        <li><a href="review.html">Reviews</a></li>
+        <li><a href="gallery.html">Event Gallery</a></li>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+       
+      </ul>
+    </nav>
+    
+        <div class="dropdown-menu">
+      <span class="navbar__close">&times;</span>
+      <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="About Us.html">About Us</a></li>
+            <li><a href="plananevent.html">Plan an Event</a></li>
+            <li><a href="review.html">Reviews</a></li>
+            <li><a href="gallery.html">Event Gallery</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </div>
+  </header>
+  
+
+<div class="about-section">
+  <h1>About Us</h1>
+  <p>
+    At <strong>Sparkle Up</strong>, we believe every event deserves a touch of magic, a bit of sparkle, and a whole lot of heart. As a full-service event management company, we specialize in turning your vision into an unforgettable experience. From intimate gatherings to grand celebrations, we handle every detail with creativity, precision, and a passion for perfection.
+  </p>
+  <p>
+    Our team is dedicated to crafting events that reflect your unique style, blending innovation with flawless execution. Whether it's a corporate event, wedding, social celebration, or themed party, we ensure that each moment shines as brightly as your dreams. With Sparkle Up, expect nothing less than spectacular—from seamless planning to those extra touches that make your event one to remember.  </p>
+  <p class="highlighted">
+    Let us help you bring your event to life. At Sparkle Up, we don'tt just plan events; we create memories that sparkle forever.
+  </p>
+</div>
+
+<h2>Our Team</h2>
+<div class="row">
+  <div class="column">
+    <div class="card">
+      <img src="img/aboutus/nuha.jpeg" alt="Fathima Nuha Nizar">
+      <div class="container">
+        <h2>Fathima Nuha Nizar</h2>
+        <p class="title">Director of Vision and Strategy</p>
+        <p class="description">Nuha is the mastermind behind our team's strategies. With a knack for seeing the big picture, Nuha ensures our projects stay on track and meet the highest standards. When not crafting visionary plans, you'll find Nuha geeking out over the latest tech trends.</p>
+        <p class="email">nuhanizar@gmail.com</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="column">
+    <div class="card">
+      <img src="img/aboutus/jaim.jpeg" alt="Jaimelynn Wong Shin Yew">
+      <div class="container">
+        <h2>Jaimelynn Wong Shin Yew</h2>
+        <p class="title">Creative Director of Design</p>
+        <p class="description">Jaime is the genius behind every pixel, color palette, and layout. As the Creative Director, Jaime ensures our websites are not only beautiful but also user-friendly. Every detail reflects Jaime's passion for aesthetics and functionality.</p>
+        <p class="email">jaimlynn@gmail.com</p>
+      </div>
+    </div>
+  </div>
+  
+  <div class="column">
+    <div class="card">
+      <img src="img/aboutus/voon.jpg" alt="Voon Yik Hui">
+      <div class="container">
+        <h2>Voon Yik Hui</h2>
+        <p class="title">Technical Director of Development</p>
+        <p class="description">Voon is the tech-savvy problem solver who makes everything work. As the Technical Director, Voon takes charge of coding, troubleshooting, and optimizing our projects to perfection. If it's broken, Voon's already fixed it.</p>
+        <p class="email">voon@gmail.com</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="column">
+    <div class="card">
+      <img src="img/aboutus/eht.jpeg" alt="Ethan Yeng Ke Zhong">
+      <div class="container">
+        <h2>Ethan Yeng Ke Zhong</h2>
+        <p class="title"> Director of Content and Engagement</p>
+        <p class="description">Ethan ensures our message connects with people. From persuasive copy to SEO magic, Ethan's role as Content Director guarantees our words inspire, engage, and inform. Ethan's memes always land.</p>
+        <p class="email">ethan@gmail.com</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="contact-button-section">
+  <a href="contact.html" class="contact-button">Contact Us Today!</a>
+</div>
+
+<footer class="footer">
+  <div class="footer__links">
+    <nav>
+      <ul role="list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="About Us.html">About Us</a></li>
+        <li><a href="plananevent.html">Plan an Event</a></li>
+        <li><a href="review.html">Reviews</a></li>
+        <li><a href="gallery.html">Event Gallery</a></li>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </nav>
+  </div>
+  <p class="footer__copyright">
+    Copyright &copy; 2024 SparkleUp - All Rights Reserved
+  </p>
+</footer>
+
+
+
+
+
+<script>
+  function bookNow() {
+    window.location.href = "contact.html"; // Redirect to the login page
+}
+document.addEventListener("DOMContentLoaded", function () {
+  const toggle = document.querySelector(".navbar__toggle");
+  const dropdownMenu = document.querySelector(".dropdown-menu");
+  const closeBtn = document.querySelector(".navbar__close");
+
+  // Open the dropdown menu when the toggle button is clicked
+  toggle.addEventListener("click", () => {
+    dropdownMenu.classList.add("active");
+  });
+
+  // Close the dropdown menu when the close button is clicked
+  closeBtn.addEventListener("click", () => {
+    dropdownMenu.classList.remove("active");
+  });
+});
+
+
+</script>
+</body>
+</html>

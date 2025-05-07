@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="navbar">
+    <a class="navbar__logo" href="index.html">
+      <img src="logo.png" alt="mini-logo" />
+    </a>
+    <nav>
+      
+      <span class="navbar__toggle">☰</span>
+      
+      <ul class="navbar__links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="About Us.html">About Us</a></li>
+        <li><a href="plananevent.html">Plan an Event</a></li>
+        <li><a href="review.html">Reviews</a></li>
+        <li><a href="gallery.html">Event Gallery</a></li>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+       
+      </ul>
+    </nav>
+    
+        <div class="dropdown-menu">
+      <span class="navbar__close">&times;</span>
+      <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="About Us.html">About Us</a></li>
+            <li><a href="plananevent.html">Plan an Event</a></li>
+            <li><a href="review.html">Reviews</a></li>
+            <li><a href="gallery.html">Event Gallery</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </div>
+  </header>
+  <main class="dashboard">
+    <h1>Welcome, <span id="user-name"></span>!</h1>
+
+    <h2>Your Booking Details:</h2>
+    <div id="booking-details">
+      <p><strong>Event Type:</strong> <span id="event-type"></span></p>
+      <p><strong>Start Date:</strong> <span id="start-date"></span></p>
+      <p><strong>End Date:</strong> <span id="end-date"></span></p>
+      <p><strong>Start Time:</strong> <span id="start-time"></span></p>
+      <p><strong>End Time:</strong> <span id="end-time"></span></p>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__links">
+      <nav>
+        <ul role="list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="About Us.html">About Us</a></li>
+          <li><a href="plananevent.html">Plan an Event</a></li>
+          <li><a href="review.html">Reviews</a></li>
+          <li><a href="gallery.html">Event Gallery</a></li>
+          <li><a href="login.html">Login</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </nav>
+    </div>
+    <p class="footer__copyright">
+      Copyright &copy; 2024 SparkleUp - All Rights Reserved
+    </p>
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Retrieve the stored user and booking details from localStorage
+        const storedUser = JSON.parse(localStorage.getItem("user"));
+        const bookingDetails = JSON.parse(localStorage.getItem("bookingDetails"));
+
+        if (storedUser && bookingDetails) {
+            // Display the user's name and booking details
+            document.getElementById("user-name").textContent = storedUser.name;
+            document.getElementById("event-type").textContent = bookingDetails.eventType;
+            document.getElementById("start-date").textContent = bookingDetails.startDate;
+            document.getElementById("end-date").textContent = bookingDetails.endDate;
+            document.getElementById("start-time").textContent = bookingDetails.startTime;
+            document.getElementById("end-time").textContent = bookingDetails.endTime;
+        } else {
+            // If no user or booking details are found, show a message
+            document.getElementById("user-name").textContent = "Guest";
+            document.getElementById("booking-details").innerHTML = "<p>No booking details found. Please make a booking first.</p>";
+        }
+      });
+
+      document.addEventListener("DOMContentLoaded", function () {
+  const toggle = document.querySelector(".navbar__toggle");
+  const dropdownMenu = document.querySelector(".dropdown-menu");
+  const closeBtn = document.querySelector(".navbar__close");
+
+  // Open the dropdown menu when the toggle button is clicked
+  toggle.addEventListener("click", () => {
+    dropdownMenu.classList.add("active");
+  });
+
+  // Close the dropdown menu when the close button is clicked
+  closeBtn.addEventListener("click", () => {
+    dropdownMenu.classList.remove("active");
+  });
+});
+   
+
+ 
+
+
+  
+  </script>
+
+</body>
+</html>

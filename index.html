@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>SparkleUp - Home Page</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="halls.js"></script>
+</head>
+<body >
+  <header class="navbar">
+    <a class="navbar__logo" href="index.html">
+      <img src="logo.png" alt="mini-logo" />
+    </a>
+    <nav>
+      
+      <span class="navbar__toggle">☰</span>
+      
+      <ul class="navbar__links">
+        <label class="switch">
+          <input type="checkbox" >
+          <span class="slider" onclick="flipContrast()"></span>
+        </label>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="About Us.html">About Us</a></li>
+        <li><a href="plananevent.html">Plan an Event</a></li>
+        <li><a href="review.html">Reviews</a></li>
+        <li><a href="gallery.html">Event Gallery</a></li>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+       
+      </ul>
+    </nav>
+    
+        <div class="dropdown-menu">
+      <span class="navbar__close">&times;</span>
+      <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="About Us.html">About Us</a></li>
+            <li><a href="plananevent.html">Plan an Event</a></li>
+            <li><a href="review.html">Reviews</a></li>
+            <li><a href="gallery.html">Event Gallery</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </div>
+  </header>
+
+      <main class="body">
+        <section class="section">
+            <br><br>
+            <img src="logo.svg" alt="large-logo" style="background-color: rgb(144, 144, 144, 40%); border:grey solid 2px; border-radius: 5px; border-bottom: rgb(84, 84, 84) double 5px;">
+            
+            <h1>Welcome to SparkleUp – Your Event, Your Style!</h1>
+            <p>Discover the perfect venues to bring your dream events to life. From elegant weddings to corporate conferences, we make finding the ideal location simple and stress-free. 
+               Browse through our curated selection of premium halls, explore unique features, and book with ease.</p>
+            <h3>Plan with confidence<br>Celebrate in style<br>SparkleUp has got you covered!</h3>
+
+            <div class="random-halls-container">
+                <h2>Featured Halls</h2>
+                <div class="hall-grid" id="random-halls"></div>
+            </div>
+        </section>
+    </main>
+
+</body>
+<footer class="footer">
+  <div class="footer__links">
+    <nav>
+      <ul role="list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="About Us.html">About Us</a></li>
+        <li><a href="plananevent.html">Plan an Event</a></li>
+        <li><a href="review.html">Reviews</a></li>
+        <li><a href="gallery.html">Event Gallery</a></li>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </nav>
+  </div>
+  <p class="footer__copyright">
+    Copyright &copy; 2024 SparkleUp - All Rights Reserved
+  </p>
+</footer>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+const toggle = document.querySelector(".navbar__toggle");
+const dropdownMenu = document.querySelector(".dropdown-menu");
+const closeBtn = document.querySelector(".navbar__close");
+
+// Open the dropdown menu when the toggle button is clicked
+  toggle.addEventListener("click", () => {
+    dropdownMenu.classList.add("active");
+  });
+
+  // Close the dropdown menu when the close button is clicked
+  closeBtn.addEventListener("click", () => {
+    dropdownMenu.classList.remove("active");
+  });
+});
+
+</script>
+</html>

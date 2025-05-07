@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Register</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css"> <!-- Link to the external CSS file -->
+  
+</head>
+<body>
+  <header class="navbar">
+    <a class="navbar__logo" href="index.html">
+      <img src="logo.png" alt="mini-logo" />
+    </a>
+    <nav>
+      <!-- Toggle button, visible only on small screens -->
+      <span class="navbar__toggle">☰</span>
+      <!-- Main links for normal screens -->
+      <ul class="navbar__links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="About Us.html">About Us</a></li>
+        <li><a href="plananevent.html">Plan an Event</a></li>
+        <li><a href="review.html">Reviews</a></li>
+        <li><a href="gallery.html">Event Gallery</a></li>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </nav>
+    
+    <!-- Dropdown menu, hidden by default -->
+    <div class="dropdown-menu">
+      <span class="navbar__close">&times;</span>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="About Us.html">About Us</a></li>
+        <li><a href="plananevent.html">Plan an Event</a></li>
+        <li><a href="review.html">Reviews</a></li>
+        <li><a href="gallery.html">Event Gallery</a></li>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </div>
+  </header>
+      <main class="register__form">
+        <form name="registration" method="POST" onsubmit="handleRegistration(event)">
+            <h1>Register</h1>
+            <div>
+                <label for="name">Full Name</label>
+                <input type="text" name="name" id="name" placeholder="Your Name" required>
+            </div>
+            <div>
+                <label for="email">Email Address</label>
+                <input type="email" name="email" id="email" placeholder="username@example.com" required>
+            </div>
+            <div>
+                <label for="phone">Phone Number</label>
+                <input type="tel" name="phone" id="phone" placeholder="0xx-xxxxxxxx" required>
+            </div>
+            <div>
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" placeholder="●●●●●●●●" required>
+            </div>
+            <div>
+                <label for="confirm-password">Confirm Password</label>
+                <input type="password" name="confirm-password" id="confirm-password" placeholder="●●●●●●●●" required>
+            </div>
+            <div>
+                <a href="login.html">Already have an account? Login</a>
+            </div>
+            <button class="btn" type="submit">Register</button>
+        </form>
+    </main>
+    
+    <script>
+        // Handle form submission
+        function handleRegistration(event) {
+            event.preventDefault(); // Prevent the form's default submission behavior
+    
+            // Perform validation (if any)
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+    
+            if (password !== confirmPassword) {
+                alert("Passwords do not match!");
+                return;
+            }
+
+            const user = {
+              name:name,
+              email:email,
+              phone:phone,
+              password:password
+            };
+
+            localStorage.setItem("user",JSON.stringify(user));
+    
+            // Simulate registration success
+            alert("Registration successful!");
+    
+            // Redirect to booknow.html
+            window.location.href = "booknow.html";
+        }
+        document.addEventListener("DOMContentLoaded", function () {
+          const toggle = document.querySelector(".navbar__toggle");
+          const dropdownMenu = document.querySelector(".dropdown-menu");
+          const closeBtn = document.querySelector(".navbar__close");
+          
+        // Open the dropdown menu when the toggle button is clicked
+        toggle.addEventListener("click", () => {
+          dropdownMenu.classList.add("active");
+        });
+
+       // Close the dropdown menu when the close button is clicked
+       closeBtn.addEventListener("click", () => {
+        dropdownMenu.classList.remove("active");
+      });
+    });
+
+    </script>
+    
+
+
+    <footer class="footer">
+      <div class="footer__links">
+        <nav>
+          <ul role="list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="About Us.html">About Us</a></li>
+            <li><a href="plananevent.html">Plan an Event</a></li>
+            <li><a href="review.html">Reviews</a></li>
+            <li><a href="gallery.html">Event Gallery</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </nav>
+      </div>
+      <p class="footer__copyright">
+        Copyright &copy; 2024 SparkleUp - All Rights Reserved
+      </p>
+    </footer>
+</body>
+</html>

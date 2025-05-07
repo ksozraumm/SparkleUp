@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title>Find the Perfect Venue</title>
+   
+</head>
+<body>
+    <header class="navbar">
+        <a class="navbar__logo" href="index.html">
+          <img src="logo.png" alt="mini-logo" />
+        </a>
+        <nav>
+          
+          <span class="navbar__toggle">☰</span>
+          
+          <ul class="navbar__links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="About Us.html">About Us</a></li>
+        <li><a href="plananevent.html">Plan an Event</a></li>
+        <li><a href="review.html">Reviews</a></li>
+        <li><a href="gallery.html">Event Gallery</a></li>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </nav>
+        
+    
+        <div class="dropdown-menu">
+          <span class="navbar__close">&times;</span>
+          <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="About Us.html">About Us</a></li>
+        <li><a href="plananevent.html">Plan an Event</a></li>
+        <li><a href="review.html">Reviews</a></li>
+        <li><a href="gallery.html">Event Gallery</a></li>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+    </header>
+    <main>
+        <section id="halls-list"></section>
+
+        <div class="container">
+            <h2>Find the Perfect Venue</h2>
+        
+            <div class="form-group">
+                <label for="event-type">Event Type</label>
+                <select id="event-type">
+                    <option value="">Select Event Type</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="location">Location</label>
+                <select id="location">
+                    <option value="">Select Location</option>
+                </select>
+            </div>
+            <button class="button" id="search-btn">Search Venues</button>
+            <div class="results" id="results"></div>
+        </div>
+
+        
+ 
+<div id="venue-modal" class="modal">
+    <div class="modal-content">
+        
+        <span class="close" onclick="closeModal()">&times;</span>
+        
+        
+        <h2 id="modal-venue-name"></h2>
+        <button class="book-now-button" onclick="bookNow()">Book Now</button>
+        
+        <p id="modal-venue-description"></p>
+        <p><strong>Location:</strong> <span id="modal-venue-location"></span></p>
+        <p><strong>Price per Pax:</strong> MYR <span id="modal-venue-price"></span></p>
+        <p><strong>Max Pax:</strong> <span id="modal-venue-maxPax"></span></p>
+    </div>
+</div>
+
+
+      
+        
+    </main>
+
+    <script>
+        const halls = [
+            {
+                slug: 'MITEC',
+                name: 'Malaysia International Trade and Exhibition Centre',
+                locale: 'Bukit Bintang',
+                location: 'Kuala Lumpur',
+                pricePerPax: 420,
+                maxPax: 450,
+                image: 'img/plananevent/MITEC_MAIN.JPEG',
+                type: ['Annual Dinner', 'Wedding', 'Conference'],
+                description: 
+            "- Malaysia's largest exhibition and trade centre.\n" +
+            "- Modern architecture and state-of-the-art facilities.\n" +
+            "- Ideal for large events: annual dinners, weddings, and conferences.\n" +
+            "- Exceptional catering and cutting-edge audiovisual equipment.\n" +
+            "- Ample parking and easy public transport access."
+                
+            },
+            {
+                slug: 'MVEC',
+                name: 'Mid Valley Exhibition Centre',
+                locale: 'Seputeh',
+                location: 'Kuala Lumpur',
+                pricePerPax: 500,
+                maxPax: 300,
+                image: 'img/plananevent/MVEC_MAIN.jpg',
+                type: ['Wedding', 'Function Hall', 'Conference'],
+                description: 
+        '- Located in the vibrant Mid Valley City.\n' +
+        '- Elegant interiors and customizable floor plans.\n' +
+        '- Suitable for weddings, corporate functions, and conferences.\n' +
+        '- Surrounded by shopping malls and hotels.\n' +
+        '- Offers comprehensive event management support.'
+            },
+            {
+            slug: 'PICC',
+            name: 'Putrajaya International Convention Centre',
+            locale: 'Seputeh',
+            location: 'Putrajaya',
+            pricePerPax: 500,
+            maxPax: 300,
+            image: 'img/plananevent/PICC_MAIN.webp',
+            type: ['Wedding', 'Function Hall', 'Conference'],
+            description: 
+        '- Picturesque location in Putrajaya with stunning views.\n' +
+        '- Grand yet versatile venue for weddings and conferences.\n' +
+        '- World-class amenities and advanced tech support.\n' +
+        '- Offers tailored event packages.\n' +
+        '- Perfect blend of luxury and convenience.'
+        },
+        {
+            slug: 'SASICC',
+            name: 'Sultan Ahmad Shah International Convention Center',
+            locale: 'Seputeh',
+            location: 'Shah Alam',
+            pricePerPax: 500,
+            maxPax: 300,
+            image: 'img/plananevent/SASICC_MAIN.jpg',
+            type: ['Wedding', 'Function Hall', 'Conference'],
+            description: 
+            "- Iconic venue in Shah Alam known for elegance and functionality.\n" +
+            "- Ideal for weddings, corporate events, and social functions.\n" +
+            "- Spacious halls with premium facilities.\n" +
+            "- Dedicated events team to ensure a flawless experience.\n" +
+            "- Strategically located with excellent accessibility."
+        },
+        {
+            slug: 'BKCC',
+            name: 'Bukit Kemuning Convention Centre',
+            locale: 'Shah Alam',
+            location: 'Selangor',
+            pricePerPax: 450,
+            maxPax: 500,
+            image: 'img/plananevent/BKCC_MAIN.jpeg',
+            type: ['Annual Dinner', 'Function Hall', 'Conference'],
+            description: 
+            "- Affordable and versatile venue in Selangor.\n" +
+            "- Can host up to 500 guests for large-scale gatherings.\n" +
+            "- Modern lighting and audiovisual systems.\n" +
+            "- Tailored catering options available.\n" +
+            "- Excellent for weddings, annual dinners, and conferences."
+        },
+        {
+            slug: 'GICC',
+            name: 'Genting International Convention Centre',
+            locale: 'Genting',
+            location: 'Pahang',
+            pricePerPax: 350,
+            maxPax: 400,
+            image: 'img/plananevent/GRCC_MAIN.jpeg',
+            type: ['Annual Dinner', 'Function Hall', 'Conference'],
+            description: 
+            "- Located in the cool highlands of Genting.\n" +
+            "- Elegant décor and serene environment for memorable events.\n" +
+            "- Perfect for corporate events, annual dinners, and conferences.\n" +
+            "- Proximity to nearby attractions.\n" +
+            "- Offers professional services and a refreshing atmosphere."
+        },
+        {
+            slug: 'KLCC',
+            name: 'Kuala Lumpur Convention Centre',
+            locale: 'Bukit Bintang',
+            location: 'Kuala Lumpur',
+            pricePerPax: 400,
+            maxPax: 450,
+            image: 'img//plananevent/KLCC_MAIN.jpeg',
+            type: ['Annual Dinner', 'Wedding', 'Conference'],
+            description: 
+            "- Iconic landmark in the heart of Kuala Lumpur.\n" +
+            "- Cutting-edge facilities and breathtaking city views.\n" +
+            "- Renowned for hospitality and event expertise.\n" +
+            "- Suitable for weddings, annual dinners, and conferences.\n" +
+            "- Prime location in Bukit Bintang with easy access to amenities."
+        },
+        {
+            slug: 'MICC',
+            name: 'Mines International Exhibition & Convention Centre',
+            locale: 'Seri Kembayang',
+            location: 'Selangor',
+            pricePerPax: 400,
+            maxPax: 700,
+            image: 'img/plananevent/MICC_MAIN.jpeg',
+            type: ['Function Hall', 'Annual Dinner', 'Conference'],
+            description: 
+            "- Located in the lush Seri Kembangan area.\n" +
+            "- Accommodates up to 700 guests.\n" +
+            "- Customizable packages and advanced tech support.\n" +
+            "- Elegant ambiance for weddings and corporate events.\n" +
+            "- Strong emphasis on customer satisfaction."
+            
+        },
+        {
+            slug: 'MITC',
+            name: 'Melaka International Trade Centre',
+            locale: 'Ayer Keroh',
+            location: 'Melaka',
+            pricePerPax: 400,
+            maxPax: 550,
+            image: 'img/plananevent/MITC_MAIN.jpeg',
+            type: ['Function Hall', 'Exhibition', 'Wedding'],
+            description: 
+            "- Situated in the historical city of Melaka.\n" +
+            "- Modern amenities and versatile spaces for exhibitions and events.\n" +
+            "- Perfect for weddings, corporate functions, and trade shows.\n" +
+            "- Proximity to Melaka's heritage sites adds unique charm.\n" +
+            "- Ample parking and experienced event planning team."
+        }
+    ];
+  
+                
+
+        
+        const eventTypeSelect = document.getElementById('event-type');
+        const locationSelect = document.getElementById('location');
+        const resultsContainer = document.getElementById('results');
+
+        const uniqueTypes = [...new Set(halls.flatMap(hall => hall.type))];
+        const uniqueLocations = [...new Set(halls.map(hall => hall.location))];
+
+        uniqueTypes.forEach(type => {
+            const option = document.createElement('option');
+            option.value = type;
+            option.textContent = type;
+            eventTypeSelect.appendChild(option);
+        });
+
+        uniqueLocations.forEach(location => {
+            const option = document.createElement('option');
+            option.value = location;
+            option.textContent = location;
+            locationSelect.appendChild(option);
+        });
+
+        
+        document.getElementById('search-btn').addEventListener('click', () => {
+            const selectedType = eventTypeSelect.value;
+            const selectedLocation = locationSelect.value;
+
+            resultsContainer.innerHTML = ''; // Clear previous results
+
+            const filteredHalls = halls.filter(hall =>
+                (selectedType ? hall.type.includes(selectedType) : true) &&
+                (selectedLocation ? hall.location === selectedLocation : true)
+            );
+
+            if (filteredHalls.length > 0) {
+                filteredHalls.forEach(hall => {
+                    const venueDiv = document.createElement('div');
+                    venueDiv.classList.add('venue');
+                    venueDiv.style.backgroundImage = `url(${hall.image})`;
+                    venueDiv.innerHTML = `
+                        <h3>${hall.name}</h3>
+                        <p>${hall.locale} | ${hall.location}</p>
+                        <p>MYR ${hall.pricePerPax} per pax</p>
+                        <p>Max Pax: ${hall.maxPax}</p>
+                        <button class="view-more-button" onclick="viewMore('${hall.slug}')">View More</button>
+                    `;
+                    resultsContainer.appendChild(venueDiv);
+                });
+            } else {
+                resultsContainer.innerHTML = '<p>No venues match your criteria.</p>';
+            }
+        });
+
+      
+        function viewMore(slug) {
+            const venue = halls.find(hall => hall.slug === slug);
+
+            if (venue) {
+                document.getElementById('modal-venue-name').textContent = venue.name;
+                document.getElementById('modal-venue-description').textContent = venue.description;
+                document.getElementById('modal-venue-location').textContent = venue.location;
+                document.getElementById('modal-venue-price').textContent = venue.pricePerPax;
+                document.getElementById('modal-venue-maxPax').textContent = venue.maxPax;
+
+                document.getElementById('venue-modal').style.display = 'block';
+            }
+        }
+        function bookNow() {
+    window.location.href = "login.html"; 
+
+
+
+
+        }
+        function closeModal() {
+            document.getElementById('venue-modal').style.display = 'none';
+        }
+    </script>
+   <footer class="footer">
+    <div class="footer__links">
+      <nav>
+        <ul role="list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="About Us.html">About Us</a></li>
+            <li><a href="plananevent.html">Plan an Event</a></li>
+            <li><a href="review.html">Reviews</a></li>
+            <li><a href="gallery.html">Event Gallery</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </nav>
+    </div>
+    <p class="footer__copyright">
+      Copyright &copy; 2024 Sparkle Up - All Rights Reserved
+    </p>
+  </footer>
+      <script>
+        document.addEventListener("DOMContentLoaded", function () {
+  const toggle = document.querySelector(".navbar__toggle");
+  const dropdownMenu = document.querySelector(".dropdown-menu");
+  const closeBtn = document.querySelector(".navbar__close");
+
+  
+  toggle.addEventListener("click", () => {
+    dropdownMenu.classList.add("active");
+  });
+
+ 
+  closeBtn.addEventListener("click", () => {
+    dropdownMenu.classList.remove("active");
+  });
+});
+
+      </script>
+</body>
+</html>

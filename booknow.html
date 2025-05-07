@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Now</title>
+   
+    <link rel="stylesheet" href="style.css"> <!-- Link to the external CSS file -->
+</head>
+<body>
+  <header class="navbar">
+    <a class="navbar__logo" href="index.html">
+      <img src="logo.png" alt="mini-logo" />
+    </a>
+    <nav>
+      <!-- Toggle button, visible only on small screens -->
+      <span class="navbar__toggle">☰</span>
+      <!-- Main links for normal screens -->
+      <ul class="navbar__links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="About Us.html">About Us</a></li>
+        <li><a href="plananevent.html">Plan an Event</a></li>
+        <li><a href="review.html">Reviews</a></li>
+        <li><a href="gallery.html">Event Gallery</a></li>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </nav>
+    
+    <!-- Dropdown menu, hidden by default -->
+    <div class="dropdown-menu">
+      <span class="navbar__close">&times;</span>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="About Us.html">About Us</a></li>
+        <li><a href="plananevent.html">Plan an Event</a></li>
+        <li><a href="review.html">Reviews</a></li>
+        <li><a href="gallery.html">Event Gallery</a></li>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </div>
+  </header>
+  
+  <div class="container">
+    <h2>Book Your Event Now</h2>
+    <form id="booking-form">
+        <div class="form-group">
+            <label for="event-type">Event Type</label>
+            <select id="event-type" required>
+                <option value="">Select Event Type</option>
+                <option value="Annual Dinner">Annual Dinner</option>
+                <option value="Wedding">Wedding</option>
+                <option value="Conference">Conference</option>
+                <option value="Function Hall">Function Hall</option>
+                <option value="Exihibition">Exhibition</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="start-date">Start Date</label>
+            <input type="date" id="start-date" required>
+        </div>
+        <div class="form-group">
+            <label for="end-date">End Date</label>
+            <input type="date" id="end-date" required>
+        </div>
+        <div class="form-group">
+            <label for="start-time">Start Time</label>
+            <input type="time" id="start-time" required>
+        </div>
+        <div class="form-group">
+            <label for="end-time">End Time</label>
+            <input type="time" id="end-time" required>
+        </div>
+        <div class="form-group">
+            <label for="number-of-pax">Number of Pax</label>
+            <input type="number" id="number-of-pax" min="1" required>
+        </div>
+        <div class="form-group">
+            <label for="payment-method">Payment Method</label>
+            <select id="payment-method" required>
+                <option value="">Please select a payment method</option>
+                <option value="Credit Card">Credit Card</option>
+                <option value="E-Wallet">E-Wallet</option>
+                <option value="Online Transfer">Online Transfer</option>
+            </select>
+        </div>
+        <button type="submit" class="btn">Book Now</button>
+    </form>
+  </div>
+  
+  <footer class="footer">
+    <div class="footer__links">
+      <nav>
+        <ul role="list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="About Us.html">About Us</a></li>
+          <li><a href="plan.html">Event Gallery</a></li>
+          <li><a href="consult.html">Reviews</a></li>
+          <li><a href="gallery.html">Contact Us</a></li>
+          <li><a href="login.html">Login</a></li>
+        </ul>
+      </nav>
+    </div>
+    <p class="footer__copyright">
+      Copyright &copy; 2024 Sparkle Up - All Rights Reserved
+    </p>
+  </footer>
+  
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const toggle = document.querySelector(".navbar__toggle");
+      const dropdownMenu = document.querySelector(".dropdown-menu");
+      const closeBtn = document.querySelector(".navbar__close");
+
+      // Open the dropdown menu when the toggle button is clicked
+      toggle.addEventListener("click", () => {
+        dropdownMenu.classList.add("active");
+      });
+
+      // Close the dropdown menu when the close button is clicked
+      closeBtn.addEventListener("click", () => {
+        dropdownMenu.classList.remove("active");
+      });
+
+      document.getElementById("booking-form").addEventListener("submit", function(event) {
+        event.preventDefault();
+        const eventType = document.getElementById("event-type").value;
+        const startDate = document.getElementById("start-date").value;
+        const endDate = document.getElementById("end-date").value;
+        const startTime = document.getElementById("start-time").value;
+        const endTime = document.getElementById("end-time").value;
+
+        const storedUser = JSON.parse(localStorage.getItem("user"));
+        const userName = storedUser ? storedUser.name: "Guest";
+
+        const bookingDetails = {
+          name: userName,
+          eventType: eventType,
+          startDate: startDate,
+          endDate: endDate,
+          startTime: startTime,
+          endTime: endTime
+        };
+
+        localStorage.setItem("bookingDetails", JSON.stringify(bookingDetails));
+        alert("Event successfully booked! A confirmation email has been sent to your registered email.");
+        window.location.href = "dashboard.html";
+      });
+    });
+
+</script>
+ 
+  
+</body>
+</html>

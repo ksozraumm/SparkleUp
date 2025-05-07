@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css"> 
+ 
+</head>
+<body>
+    
+  <header class="navbar">
+    <a class="navbar__logo" href="index.html">
+      <img src="logo.png" alt="mini-logo" />
+    </a>
+    <nav>
+      
+      <span class="navbar__toggle">☰</span>
+    
+      <ul class="navbar__links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="About Us.html">About Us</a></li>
+        <li><a href="plananevent.html">Plan an Event</a></li>
+        <li><a href="review.html">Reviews</a></li>
+        <li><a href="gallery.html">Event Gallery</a></li>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </nav>
+    
+  
+    <div class="dropdown-menu">
+      <span class="navbar__close">&times;</span>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="About Us.html">About Us</a></li>
+        <li><a href="plananevent.html">Plan an Event</a></li>
+        <li><a href="review.html">Reviews</a></li>
+        <li><a href="gallery.html">Event Gallery</a></li>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </div>
+</header>
+    <main class="login__form">
+      <form name="login" method="GET" action="booknow.html">
+        <h1>Login</h1>
+        <div>
+            <label for="email">Email Address</label>
+            <input type="email" name="email" id="email" placeholder="username@example.com" required>
+        </div>
+        <div>
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" placeholder="●●●●●●●●" required>
+        </div>
+        <div>
+            <a id="register-link" href="register.html">Create an account instead.</a>
+        </div>
+        <button class="btn" type="submit">Login</button>
+    </form>
+    
+       
+    </main>
+    <footer class="footer">
+      <div class="footer__links">
+        <nav>
+          <ul role="list">
+            <li><a href="index.html">Home</a></li>
+        <li><a href="About Us.html">About Us</a></li>
+        <li><a href="plananevent.html">Plan an Event</a></li>
+        <li><a href="review.html">Reviews</a></li>
+        <li><a href="gallery.html">Event Gallery</a></li>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </nav>
+      </div>
+      <p class="footer__copyright">
+        Copyright &copy; 2024 SparkleUp - All Rights Reserved
+      </p>
+    </footer>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const loginForm = document.querySelector('form[name="login"]');
+      const toggle = document.querySelector(".navbar__toggle");
+      const dropdownMenu = document.querySelector(".dropdown-menu");
+      const closeBtn = document.querySelector(".navbar__close");
+
+      toggle.addEventListener("click",() => {
+        dropdownMenu.classList.add("active");
+      });
+      
+      closeBtn.addEventListener("click", () => {
+        dropdownMenu.classList.remove("active");
+      });
+
+      loginForm.addEventListener("submit",function(event) {
+        event.preventDefault();
+        const email =document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+        const storedUser = JSON.parse(localStorage.getItem("user"));
+
+        if(storedUser) {
+          if(email === storedUser.email && password === storedUser.password) {
+            alert("Login successful!");
+            window.location.href = "booknow.html";
+          } else {
+            alert ("Invalid credentials! Please try again.");
+          }
+        } else {
+          alert("No user found. Please register first.");
+        }
+      });
+    });
+  </script>
+   
+</body>
+</html>

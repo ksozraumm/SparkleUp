@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Review Page</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+</head>
+<body>
+    <header class="navbar">
+     
+
+        <a class="navbar__logo" href="index.html">
+          <img src="logo.png" alt="mini-logo" />
+        </a>
+        <nav>
+          
+          <span class="navbar__toggle">☰</span>
+          
+          <ul class="navbar__links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="About Us.html">About Us</a></li>
+            <li><a href="plananevent.html">Plan an Event</a></li>
+            <li><a href="review.html">Reviews</a></li>
+            <li><a href="gallery.html">Event Gallery</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </nav>
+        
+        
+        <div class="dropdown-menu">
+          <span class="navbar__close">&times;</span>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="About Us.html">About Us</a></li>
+            <li><a href="plananevent.html">Plan an Event</a></li>
+            <li><a href="review.html">Reviews</a></li>
+            <li><a href="gallery.html">Event Gallery</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+    </header>
+
+<section class="reivew" id="review">
+    <h1 class="heading">Client's <span>Review</span></h1>
+    <div class="swiper-container review-slider">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <i class="fas fa-quote-right"></i>
+                <div class="user">
+                    <img src="img/review/review4.jpg" alt="User Image">
+                    <div>
+                        <h3>Johnny</h3>
+                        <span>Happy Customer</span>
+                    </div>
+                </div>
+                <p>Thank you so much for putting on a spectacular production!  Our team is still talking about it, flooding TEAMS channels and emails, commenting on what an amazing and memorable event we just had.   We couldn’t have done it without you all of you.</p>
+            </div>
+            <div class="swiper-slide">
+                <i class="fas fa-quote-right"></i>
+                <div class="user">
+                    <img src="img/review/review1.jpg" alt="User Image">
+                    <div>
+                        <h3>Lisa</h3>
+                        <span>Happy Customer</span>
+                    </div>
+                </div>
+                <p>It was a fun-filled event that connected our team wonderfully. Thank you!</p>
+            </div>
+            <div class="swiper-slide">
+                <i class="fas fa-quote-right"></i>
+                <div class="user">
+                    <img src="img/review/review2.jpg" alt="User Image">
+                    <div>
+                        <h3>Mary</h3>
+                        <span>Happy Customer</span>
+                    </div>
+                </div>
+                <p>imply amazing – that’s what you are! Last night’s holiday party exceeded my expectations. Not only did you create a great ambiance with the lounges, lighting, and music, but the food displays were a work of art. And the entertainment? People are still talking about it. My guests all enjoyed a wonderful evening. Thank you so much for making me look good.</p>
+            </div>
+            <div class="swiper-slide">
+                <i class="fas fa-quote-right"></i>
+                <div class="user">
+                    <img src="img/review/review3.jpg" alt="User Image">
+                    <div>
+                        <h3>Rose</h3>
+                        <span>Happy Customer</span>
+                    </div>
+                </div>
+                <p>Sparkle Up is a hands-on event company that takes care of all the details from A to Z.  They are very good at working with your specific needs and budget in mind.  The staff is fantastic, the food is great and they always have a variety of creative options to keep your guests entertained. Working with Event Solutions makes my job so much easier!</p>
+            </div>
+        </div>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="footer__links">
+      <nav>
+        <ul role="list">
+          <li><a href="index.html">Home</a></li>
+            <li><a href="About Us.html">About Us</a></li>
+            <li><a href="plananevent.html">Plan an Event</a></li>
+            <li><a href="review.html">Reviews</a></li>
+            <li><a href="gallery.html">Event Gallery</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </nav>
+    </div>
+    <p class="footer__copyright">
+      Copyright &copy; 2024 SparkleUp - All Rights Reserved
+    </p>
+  </footer>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    new Swiper(".review-slider", {
+        direction: "horizontal",
+        loop: true,
+        autoplay: {
+            delay: 2000,
+            disableOnInteraction: false,
+        },
+        grabCursor: true,
+        spaceBetween: 30,
+        slidesPerView: 1,
+        pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+        },
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
+    });
+});
+document.addEventListener("DOMContentLoaded", function () {
+  const toggle = document.querySelector(".navbar__toggle");
+  const dropdownMenu = document.querySelector(".dropdown-menu");
+  const closeBtn = document.querySelector(".navbar__close");
+
+  
+  toggle.addEventListener("click", () => {
+    dropdownMenu.classList.add("active");
+  });
+
+  
+  closeBtn.addEventListener("click", () => {
+    dropdownMenu.classList.remove("active");
+  });
+});
+
+</script>
+</body>
+</html>
+

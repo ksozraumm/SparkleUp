@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Sparkle Up - Contact Us</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css"> 
+</head>
+<body>
+  <header class="navbar">
+    <a class="navbar__logo" href="index.html">
+      <img src="logo.png" alt="mini-logo" />
+    </a>
+    <nav>
+      <span class="navbar__toggle">☰</span>
+      <ul class="navbar__links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="About Us.html">About Us</a></li>
+        <li><a href="plananevent.html">Plan an Event</a></li>
+        <li><a href="review.html">Reviews</a></li>
+        <li><a href="gallery.html">Event Gallery</a></li>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </nav>
+    <div class="dropdown-menu">
+      <span class="navbar__close">&times;</span>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="About Us.html">About Us</a></li>
+        <li><a href="plananevent.html">Plan an Event</a></li>
+        <li><a href="review.html">Reviews</a></li>
+        <li><a href="gallery.html">Event Gallery</a></li>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </div>
+  </header>
+  
+  <main class="contact">
+    <section class="contact__search">
+        <h1>Contact Us</h1>
+        <h2>We plan You enjoy!</h2>
+        <form onsubmit="sendMessage(event)">
+            <div class="inputBox">
+                <label for="name">Name:</label>
+                <input type="text" id="name" placeholder="name" required>
+            </div>
+            <div class="inputBox">
+                <label for="email">Email:</label>
+                <input type="email" id="email" placeholder="email" required>
+            </div>
+            <div class="inputBox">
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" placeholder="phone number" required>
+            </div>
+            <div class="inputBox">
+                <label for="subject">Subject:</label>
+                <input type="text" id="subject" placeholder="subject" required>
+            </div>
+            <div class="inputBox">
+                <label for="message">Message:</label>
+                <textarea id="message" placeholder="message" cols="30" rows="10" required></textarea>
+            </div>
+            <input type="submit" value="send message" class="btn">
+        </form>
+    </section>
+
+    <section class="faq">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq__item">
+            <h3>How do I book an event?</h3>
+            <p>You can book an event through our website or email us through sparkleupcs@gmail.com.</p>
+        </div>
+        <div class="faq__item">
+            <h3>What services do Sparkle Up offer?</h3>
+            <p>We offer a wide range of services including event planning, catering, decorations, and more.</p>
+        </div>
+        <div class="faq__item">
+            <h3>Can I customize my event?</h3>
+            <p>Yes, we offer customized event planning tailored to your specific needs and preferences.</p>
+        </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__links">
+      <nav>
+        <ul role="list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="About Us.html">About Us</a></li>
+          <li><a href="plananevent.html">Plan an Event</a></li>
+          <li><a href="review.html">Reviews</a></li>
+          <li><a href="gallery.html">Event Gallery</a></li>
+          <li><a href="login.html">Login</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </nav>
+    </div>
+    <p class="footer__copyright">
+      Copyright &copy; 2024 Sparkle Up - All Rights Reserved
+    </p>
+  </footer>
+
+  <script>
+    function sendMessage(event) {
+        event.preventDefault(); // Prevents form submission
+        alert("Message sent successfully, an email will be sent to you soon.");
+        event.target.reset(); // Optionally resets the form
+    }
+   
+      document.addEventListener("DOMContentLoaded", function () {
+  const toggle = document.querySelector(".navbar__toggle");
+  const dropdownMenu = document.querySelector(".dropdown-menu");
+  const closeBtn = document.querySelector(".navbar__close");
+
+    // Open the dropdown menu when the toggle button is clicked
+      toggle.addEventListener("click", () => {
+        dropdownMenu.classList.add("active");
+      });
+    
+      // Close the dropdown menu when the close button is clicked
+      closeBtn.addEventListener("click", () => {
+        dropdownMenu.classList.remove("active");
+      });
+    });
+
+    </script>
+  </script>
+  
+</body>
+</html>
